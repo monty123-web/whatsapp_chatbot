@@ -55,10 +55,14 @@ app.get('/api/chats/:chatId/messages', (req, res) => {
 // WhatsApp client
 const client = new Client({
     authStrategy: new LocalAuth({ clientId: "main-bot" }),
-    puppeteer: {
-        headless: false,
-        executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        puppeteer: {
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu'
+        ]
     }
 });
 
