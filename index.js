@@ -55,17 +55,15 @@ app.get('/api/chats/:chatId/messages', (req, res) => {
 // WhatsApp client
 const client = new Client({
     authStrategy: new LocalAuth({ clientId: "main-bot" }),
-        puppeteer: {
+    puppeteer: {
         headless: true,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage',
-            '--disable-gpu'
+            '--disable-dev-shm-usage'
         ]
     }
 });
-
 client.on('qr', (qr) => {
     console.log('Scan this QR Code:');
     qrcode.generate(qr, { small: true });
